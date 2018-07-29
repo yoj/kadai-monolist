@@ -62,3 +62,7 @@ end
 gem 'bcrypt'
 
 gem 'bootstrap-sass'
+
+gem 'rakuten_web_service' , '1.5.0'
+
+gem 'dotenv-rails'

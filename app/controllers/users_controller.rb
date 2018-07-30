@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :require_login, except: ['new']
+  before_action :require_login, except: ['new', 'create']
   
   def new
     @user= User.new
@@ -7,9 +7,8 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_param)
-    
     if @user.save
-      redirect_to user_path(@user.id), success: 'ようこそ、monolistへ'
+      login(@user.id, 'ようこそ、monolistへ')
     else
       @user= User.new
       flash.now[:danger] = '登録に失敗しました、再度お試しください'

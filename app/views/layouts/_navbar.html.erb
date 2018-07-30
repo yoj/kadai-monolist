@@ -16,7 +16,7 @@
       <ul class="nav navbar-nav navbar-right">
         <% unless logged_in? %>
           <li><%= link_to '新規登録', singin_path %></li>
-          <li><a href="#">ログイン</a></li>
+          <li><%= link_to 'ログイン', login_path %></li>
         <% else %>
         
         <li>

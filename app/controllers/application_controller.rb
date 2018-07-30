@@ -7,6 +7,12 @@ class ApplicationController < ActionController::Base
   add_flash_types :success, :info, :warning, :danger
   
   private
+  
+  def login(user_id, msg)
+    session['user_id'] = user_id
+    redirect_to user_path(user_id), success: msg
+  end
+  
   def require_login
     unless logged_in?
       redirect_to login_path, danger: "ログインしていません"

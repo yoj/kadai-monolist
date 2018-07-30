@@ -7,10 +7,10 @@ class SessionsController < ApplicationController
 
   def create
     @user = User.find_by(email: user_login_param[:email])
+    
     if @user && @user.authenticate(user_login_param[:password])
       # ログイン成功 sessionにユーザIDを格納しログイン状態とする
-      session[:user_id] = @user.id
-      redirect_to user_path(@user.id), sueccess: 'ログインしました'
+      login(@user.id, 'ログインしました')
     else
       flash.now[:danger] = 'ログインできませんでした'
       render :new

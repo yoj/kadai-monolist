@@ -8,5 +8,6 @@ Rails.application.routes.draw do
   get 'singin', to: 'users#new'
   resources :users, except: ['new']
   
-  resources :items, only: [:new]
+  resources :items, only: [:show, :new]
+  resources :ownerships, only: [:create, :destroy]
 end
